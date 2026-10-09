@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Scientific Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/calculator.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="titlebar">
+      <div class="titlebar-left">
+        <button type="button" class="icon-btn" id="menuBtn" aria-label="Menu" title="Menu">☰</button>
+        <h1>Scientific</h1>
+      </div>
+      <div class="titlebar-right">
+        <button type="button" class="icon-btn" id="themeToggle" aria-label="Toggle theme" title="Toggle light/dark">◐</button>
+        <button type="button" class="icon-btn" id="historyBtn" aria-label="History" title="History"> Conting</button>
+      </div>
+    </header>
+
+    <main class="calculator">
+      <section class="display" aria-live="polite">
+        <div class="expression" id="expression"></div>
+        <div class="value" id="display">0</div>
+      </section>
+
+      <section class="memory-row" aria-label="Memory">
+        <button type="button" data-cmd="MC" class="mem" id="btnMC" disabled>MC</button>
+        <button type="button" data-cmd="MR" class="mem" id="btnMR" disabled>MR</button>
+        <button type="button" data-cmd="M_PLUS" class="mem">M+</button>
+        <button type="button" data-cmd="M_MINUS" class="mem">M−</button>
+        <button type="button" data-cmd="MS" class="mem">MS</button>
+      </section>
+
+      <section class="mode-row" aria-label="Modes">
+        <button type="button" class="mode active" data-cmd="DEG" id="btnDEG">DEG</button>
+        <button type="button" class="mode" data-cmd="RAD" id="btnRAD">RAD</button>
+        <button type="button" class="mode" data-cmd="GRAD" id="btnGRAD">GRAD</button>
+        <button type="button" class="mode toggle" data-cmd="FE" id="btnFE" aria-pressed="false">F-E</button>
+        <button type="button" class="mode toggle" data-cmd="HYP" id="btnHYP" aria-pressed="false">HYP</button>
+      </section>
+
+      <section class="pad" id="pad" aria-label="Keypad">
+        <button type="button" data-cmd="2ND" class="fn toggle" id="btn2ND" aria-pressed="false">2<sup>nd</sup></button>
+        <button type="button" data-cmd="PI" class="fn">π</button>
+        <button type="button" data-cmd="E" class="fn">e</button>
+        <button type="button" data-cmd="C" class="fn">C</button>
+        <button type="button" data-cmd="BACKSPACE" class="fn" aria-label="Backspace">⌫</button>
+
+        <button type="button" class="fn dual" data-primary="SQUARE" data-second="CUBE" data-label="x²" data-label2="x³">x²</button>
+        <button type="button" data-cmd="RECIPROCAL" class="fn">1/x</button>
+        <button type="button" data-cmd="ABS" class="fn">|x|</button>
+        <button type="button" data-cmd="EXP_NOTATION" class="fn">exp</button>
+        <button type="button" data-cmd="MOD" class="fn">mod</button>
+
+        <button type="button" class="fn trig" data-trig="SIN" data-label="sin">sin</button>
+        <button type="button" class="fn trig" data-trig="COS" data-label="cos">cos</button>
+        <button type="button" class="fn trig" data-trig="TAN" data-label="tan">tan</button>
+        <button type="button" class="fn dual" data-primary="SQRT" data-second="CBRT" data-label="√" data-label2="∛">√</button>
+        <button type="button" data-cmd="LPAREN" class="fn">(</button>
+
+        <button type="button" class="fn dual" data-primary="POW" data-second="YROOT" data-label="xʸ" data-label2="ʸ√x">xʸ</button>
+        <button type="button" data-cmd="RPAREN" class="fn">)</button>
+        <button type="button" data-cmd="FACTORIAL" class="fn">n!</button>
+        <button type="button" data-cmd="DIV" class="op">÷</button>
+        <button type="button" data-cmd="CE" class="fn">CE</button>
+
+        <button type="button" class="fn dual" data-primary="EXP10" data-second="EXP2" data-label="10ˣ" data-label2="2ˣ">10ˣ</button>
+        <button type="button" data-cmd="DIGIT_7" class="num">7</button>
+        <button type="button" data-cmd="DIGIT_8" class="num">8</button>
+        <button type="button" data-cmd="DIGIT_9" class="num">9</button>
+        <button type="button" data-cmd="MUL" class="op">×</button>
+
+        <button type="button" class="fn dual" data-primary="LOG" data-second="LOG" data-label="log" data-label2="log">log</button>
+        <button type="button" data-cmd="DIGIT_4" class="num">4</button>
+        <button type="button" data-cmd="DIGIT_5" class="num">5</button>
+        <button type="button" data-cmd="DIGIT_6" class="num">6</button>
+        <button type="button" data-cmd="SUB" class="op">−</button>
+
+        <button type="button" class="fn dual" data-primary="LN" data-second="EXP" data-label="ln" data-label2="eˣ">ln</button>
+        <button type="button" data-cmd="DIGIT_1" class="num">1</button>
+        <button type="button" data-cmd="DIGIT_2" class="num">2</button>
+        <button type="button" data-cmd="DIGIT_3" class="num">3</button>
+        <button type="button" data-cmd="ADD" class="op">+</button>
+
+        <button type="button" data-cmd="NEGATE" class="fn">+/−</button>
+        <button type="button" data-cmd="DIGIT_0" class="num">0</button>
+        <button type="button" data-cmd="DECIMAL" class="num">.</button>
+        <button type="button" data-cmd="PERCENT" class="fn">%</button>
+        <button type="button" data-cmd="EQUALS" class="eq">=</button>
+      </section>
+    </main>
+
+    <footer class="hint">
+      Keyboard: digits and <kbd>+ − * /</kbd>, <kbd>Enter</kbd> =, <kbd>Esc</kbd> C, <kbd>Backspace</kbd>,
+      <kbd>F3</kbd>/<kbd>F4</kbd>/<kbd>F5</kbd> angle
+    </footer>
+  </div>
+  <script src="/js/calculator.js"></script>
+</body>
+</html>
